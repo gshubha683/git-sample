@@ -1,0 +1,41 @@
+1)Create Access Keys for the user from which EKS cluster and Node Group is created from console.
+
+
+2)Create a EC2/VM and login to it.
+install AWS CLI V2
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+3)Install Kubectl 
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+4)Install Kubectl v1.23 only ->
+curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl
+
+AWS CLI Version required -> v2
+kubectl Version required -> v1.23
+
+
+5)aws configure
+
+ Note: The below details should belong to user account using which the EKS cluster is created.
+
+ - Access Key ID: @access_key
+ - Secret Access Key: @secret_key
+ - region name: @region
+ - output format: json
+ 
+ 
+ 
+6) To create kubeconfig file, enter the below commands in the command prompt
+ 
+ 
+ -command: aws eks --region @region update-kubeconfig --name @aws-eks-cluster name
+ 
+ - ex:   aws eks --region ap-south-1 update-kubeconfig --name demo-cluster
+ 
+ 
+ 
+7) After running the above command the Kubeconfig file will be created and should be able to access the cluster using kubectl command.
+
+  command: kubectl get nodes
+
